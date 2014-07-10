@@ -4,20 +4,18 @@ public class Calculator {
     Double firstOperand;
     Double secondOperand;
     String operation;
-    Double result;
 
-    public double calculate(String expression) {
+    public void calculate(String expression) {
         parseExperssion(expression);
         if (operation.equals("+")) {
-            result = firstOperand + secondOperand;
+            summ(firstOperand, secondOperand);
         } else if (operation.equals("-")) {
-            result = firstOperand - secondOperand;
+            subtract(firstOperand, secondOperand);
         } else if (operation.equals("*")) {
-            result = firstOperand * secondOperand;
+            multy(firstOperand, secondOperand);
         } else if (operation.equals("/")) {
-            result = firstOperand / secondOperand;
+            divide(firstOperand, secondOperand);
         }
-        return result;
     }
 
     private void parseExperssion(String expression) {
@@ -25,5 +23,21 @@ public class Calculator {
         firstOperand = Double.parseDouble(items[0]);
         secondOperand = Double.parseDouble(items[2]);
         operation = items[1];
+    }
+
+    private void divide(Double firstOperand, Double secondOperand) {
+        System.out.print("Result: "+(firstOperand/secondOperand));
+    }
+
+    private void multy(Double firstOperand, Double secondOperand) {
+        System.out.print("Result: "+(firstOperand*secondOperand));
+    }
+
+    private void summ(Double firstOperand, Double secondOperand) {
+        System.out.print("Result: "+(firstOperand+secondOperand));
+    }
+
+    private void subtract(Double firstOperand, Double secondOperand) {
+        System.out.print("Result: "+(firstOperand-secondOperand));
     }
 }
