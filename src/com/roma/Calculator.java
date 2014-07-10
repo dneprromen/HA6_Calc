@@ -1,5 +1,3 @@
-package com.roma;
-
 public class Calculator {
     Double firstOperand;
     Double secondOperand;

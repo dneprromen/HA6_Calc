@@ -1,5 +1,3 @@
-package com.roma;
-
 import java.io.IOException;
 
 public class Main {
