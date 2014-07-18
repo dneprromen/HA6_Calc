@@ -1,41 +1,31 @@
-public class Calculator {
-    Double firstOperand;
-    Double secondOperand;
-    String operation;
+package com.roma;
 
-    public void calculate(String expression) {
-        parseExperssion(expression);
-        if (operation.equals("+")) {
-            summ(firstOperand, secondOperand);
-        } else if (operation.equals("-")) {
-            subtract(firstOperand, secondOperand);
-        } else if (operation.equals("*")) {
-            multy(firstOperand, secondOperand);
-        } else if (operation.equals("/")) {
-            divide(firstOperand, secondOperand);
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Calculator {
+
+    private static Scanner sc;
+
+    public static void main(String[] args) throws IOException {
+
+        sc = new Scanner(System.in);
+        do {
+            startCalculation();
+        } while (sc.nextLine().equals("y"));
+    }
+
+    private static void startCalculation() {
+        try {
+            Preparator prep = new Preparator();
+            System.out.print("Enter a math expression(example: 2+2*2+2):\n");
+            prep.parseAndExecute(sc.nextLine());
+            System.out.print("\nDo you want to continue?(y/n)\n");
+
+        } catch (Exception e) {
+            System.out.print("Wrong expression, try again\n");
+            startCalculation();
         }
     }
 
-    private void parseExperssion(String expression) {
-        String[] items = expression.split("(?<=[-+*/])|(?=[-+*/])");
-        firstOperand = Double.parseDouble(items[0]);
-        secondOperand = Double.parseDouble(items[2]);
-        operation = items[1];
-    }
-
-    private void divide(Double firstOperand, Double secondOperand) {
-        System.out.print("Result: "+(firstOperand/secondOperand));
-    }
-
-    private void multy(Double firstOperand, Double secondOperand) {
-        System.out.print("Result: "+(firstOperand*secondOperand));
-    }
-
-    private void summ(Double firstOperand, Double secondOperand) {
-        System.out.print("Result: "+(firstOperand+secondOperand));
-    }
-
-    private void subtract(Double firstOperand, Double secondOperand) {
-        System.out.print("Result: "+(firstOperand-secondOperand));
-    }
 }
